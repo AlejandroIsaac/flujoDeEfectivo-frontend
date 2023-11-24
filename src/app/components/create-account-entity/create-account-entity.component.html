@@ -1,0 +1,61 @@
+
+<form (ngSubmit)="createRootAccount()" class="form">
+    <h1>Crear nueva cuenta</h1>
+    <mat-form-field>
+        <mat-label>Tipo de cuenta</mat-label>
+        <!--standalone: true: sirve para menejar este select independinte al formgroup-->
+            <mat-select [(ngModel)]="accoutype" [ngModelOptions]="{standalone: true}">
+                <mat-option value="Cuenta raiz">Cuenta raiz</mat-option>
+                <mat-option value="Subcuenta">Subcuenta</mat-option>
+                <mat-option value="Cuenta">Cuenta</mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="accoutype === 'Subcuenta'">
+        <mat-label>Cuenta raiz</mat-label>
+            <mat-select name="rootAccount" [(ngModel)]="newAccountDTO.rootAccount">
+                <mat-option [value]="root" *ngFor="let root of rootAccountList">
+                    {{root.name}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="accoutype === 'Cuenta'">
+        <mat-label>Subcuenta</mat-label>
+            <mat-select name="precedingAccount" [(ngModel)]="newAccountDTO.precedingAccount">
+                <mat-option [value]= 'preceding' *ngFor="let preceding of precedingAccountList">
+                    {{preceding.name}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput name="name" [(ngModel)]="newAccountDTO.name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input matInput name="description" [(ngModel)]="newAccountDTO.description">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Codigo</mat-label>
+        <input matInput name="code" [(ngModel)]="newAccountDTO.code">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Total</mat-label>
+        <input type="number" matInput name="total" [(ngModel)]="newAccountDTO.total">
+    </mat-form-field>
+    <mat-form-field *ngIf="accoutype === 'Cuenta raiz'">
+        <mat-label>Debe</mat-label>
+            <mat-select name="debe" [(ngModel)]="newAccountDTO.debe">
+                <mat-option value="+">+</mat-option>
+                <mat-option value="-">-</mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="accoutype === 'Cuenta raiz'">
+        <mat-label>Haber</mat-label>
+            <mat-select name="haber" [(ngModel)]="newAccountDTO.haber">
+                <mat-option value="+">+</mat-option>
+                <mat-option value="-">-</mat-option>
+            </mat-select>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" type="submit">Crear nuevo</button>
+</form>

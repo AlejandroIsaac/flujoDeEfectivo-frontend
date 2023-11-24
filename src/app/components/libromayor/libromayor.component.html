@@ -1,0 +1,36 @@
+<main class="libro-mayor-container">
+  <section class="catalogo-cuentas">
+    <h3>CATALOGO DE CUENTAS</h3>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <!-- use a disabled button to provide padding for tree leaf -->
+          <button mat-icon-button disabled></button>
+          <mat-icon>description</mat-icon>
+          {{node.name}} {{sing}}{{node.total}}
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <mat-icon>description</mat-icon>
+          {{node.name}} {{sing}}{{node.total}}
+        </mat-tree-node>
+      </mat-tree>
+</section>
+
+<section class="create-entitys">
+  <app-create-account-entity>
+  </app-create-account-entity>
+</section>
+
+</main>
+
+
+
+<!--dataSource:-->
+<!--treeControl:-->
