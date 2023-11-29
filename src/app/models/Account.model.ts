@@ -1,9 +1,10 @@
 import { PrecedingAccount } from "./PrecedingAccount.model";
 
 export interface Account{
+	idAccount:number;
     name: string;
 	code: string;
-	description: string
+	description: string;
 	total: number;
-	precedingAccount: PrecedingAccount;
+	precedingAccount: PrecedingAccount | null;
 }

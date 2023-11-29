@@ -4,6 +4,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/m
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { AccountTreeService } from 'src/app/services/account-tree.service';
+import { NewAccountDTO } from 'src/app/models/NewAccountDTO.model';
 
 interface Account {
   id: number;
@@ -88,7 +89,9 @@ export class LibromayorComponent {
     //console.log("LibromayorComponent=> Ejecuta constructor");
   }
   ngOnInit(): void{
-    //console.log("LibromayorComponent=> Ejecuta ngOnInit");
+    this.getAllTreeAccounts();
+    
+    /*//console.log("LibromayorComponent=> Ejecuta ngOnInit");
     this.accountTreeService.getAccountTree().subscribe(
       accountTree => {
         //console.log("ngOnInit--accountTreeService.getAccountTree()");
@@ -97,40 +100,26 @@ export class LibromayorComponent {
         this.dataSource.data = accountTree;
         //console.log("this.datasouce 1 " ,this.dataSource.data);
       }
-    );
+    );*/
   }
   
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
  
+
+  getAllTreeAccounts(){
+    this.accountTreeService.getAccountTree().subscribe(
+      accountTree => {
+        this.dataSource.data = accountTree;
+        console.log("GET DATA ACCOUNTTREE" ,this.dataSource.data);
+      }
+    );
+
+  }
+  refresTree(change:string){
+    console.log("ATENCION ATENCION YA SE CREO UNA NUEVA CUANTA ENTONECES DEBO DE ACTUALIZAR EL TREE");
+    this.getAllTreeAccounts();
+  }
+
  
 
 }
-// {
-//   "idRoot": 1,
-//   "name": "activo",
-//   "total": 0.00,
-//   "precedingAccountList": [
-//       {
-//           "idPreceding": 10,
-//           "name": "Activo circulante",
-//           "total": 0.00,
-//           "accountList": [
-//               {
-//                   "idAccount": 19,
-//                   "name": "Ganancias",
-//                   "total": 0.00
-//               },
-//               {
-//                   "idAccount": 20,
-//                   "name": "Inventario",
-//                   "total": 0.00
-//               },
-//               {
-//                   "idAccount": 18,
-//                   "name": "Efectivo",
-//                   "total": 0.00
-//               }
-//           ]
-//       }
-//   ]
-// }

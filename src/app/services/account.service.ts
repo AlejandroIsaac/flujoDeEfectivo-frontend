@@ -15,4 +15,7 @@ export class AccountService {
   createAccount(newAccount: NewAccountDTO){
     return this.http.post<Account>("http://localhost:8080/account", newAccount)
   }
+  getAccountList(){
+    return this.http.get<Account[]>("http://localhost:8080/account")
+  }
 }

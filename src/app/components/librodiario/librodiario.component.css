@@ -1,6 +1,28 @@
-.sectionLibroDiario{
-    border: 3px solid;
-    width: 100%;
-    height: 1000px;
-    background-color: aqua;
+.libro-diario-container{
+    /* width: 100%; */
+    height: 550px;
+    /* border: 1px solid black; */
+    margin: 1%;
+
 }
+
+
+.seccion-newSeat{
+    
+    width: 100%;
+    height: 20%;
+    border: 2px solid rgb(222, 213, 213);
+}
+
+.section-tabla{
+    margin-top: 1%;
+    width: 100%;
+    height: 80%;
+    border: 2px solid rgb(222, 213, 213);
+    overflow: auto;
+}
+/* table {
+    margin-top: 5%;
+    overflow: auto;
+} */
+

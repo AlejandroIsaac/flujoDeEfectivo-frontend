@@ -6,6 +6,8 @@ import { AccountService } from 'src/app/services/account.service';
 import { PrecedingAccount } from 'src/app/models/PrecedingAccount.model';
 import { NewAccountDTO } from 'src/app/models/NewAccountDTO.model';
 
+import { Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-create-account-entity',
@@ -13,6 +15,10 @@ import { NewAccountDTO } from 'src/app/models/NewAccountDTO.model';
   styleUrls: ['./create-account-entity.component.css']
 })
 export class CreateAccountEntityComponent {
+  //Evento para cominicar con el padre
+  @Output() eventChangeAccontTree = new EventEmitter<string>();
+
+
   accoutype:String="";
 
   precedingAccountList :PrecedingAccount[]=[];
@@ -98,6 +104,8 @@ export class CreateAccountEntityComponent {
         console.log("Resultado de la peticion =>", data);
         alert("Se creo exitosamente");
         this.newAccountDTO= this.newAccountDtoClear;//limpiamos el formulario
+        //Avisar al padre que hay una cuaenta nueva
+        this.eventChangeAccontTree.emit("Cambia el tree");
       });
         break;
       case "Subcuenta":
@@ -107,6 +115,8 @@ export class CreateAccountEntityComponent {
         console.log("Resultado de la peticion =>", data);
         alert("Se creo exitosamente");
         this.newAccountDTO= this.newAccountDtoClear;//limpiamos el formulario
+        //Avisar al padre que hay una cuaenta nueva
+        this.eventChangeAccontTree.emit("Cambia el tree");
         });
         break
       case "Cuenta":
@@ -116,6 +126,8 @@ export class CreateAccountEntityComponent {
         console.log("Resultado de la peticion =>", data);
         alert("Se creo exitosamente");
         this.newAccountDTO= this.newAccountDtoClear;//limpiamos el formulario
+        //Avisar al padre que hay una cuaenta nueva
+        this.eventChangeAccontTree.emit("Cambia el tree");
         });
         break;
       default:

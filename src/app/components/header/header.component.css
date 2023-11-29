@@ -1,11 +1,14 @@
 *{
     background-color: rgb(231, 223, 235);
 }
-header{
+/*header{
     width: 100%;
     height: 10%;
     border: 10px solid;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
+/*.example-spacer {
+    flex: 1 1 auto;
+  }*/

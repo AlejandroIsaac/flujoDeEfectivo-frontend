@@ -1,0 +1,40 @@
+<h2>Crear un nuevo asiento contable</h2>
+<form (ngSubmit)="createSeat()" class="form">
+    <mat-form-field>
+        <mat-label>Fecha</mat-label>
+        <input type="date" matInput name="date" [(ngModel)]="newSeatDTO.date">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>No</mat-label>
+        <input type="number" matInput name="number" [(ngModel)]="newSeatDTO.number">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <input type="text" matInput name="description" [(ngModel)]="newSeatDTO.description">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cuenta origen</mat-label>
+            <mat-select name="idAccount" [(ngModel)]="newSeatDTO.accountID">
+                <mat-option [value]="account" *ngFor="let account of accountList">
+                    {{account.name}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>debe</mat-label>
+        <input type="number" matInput name="debe" [(ngModel)]="newSeatDTO.debe">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Haber</mat-label>
+        <input type="number" matInput name="haber" [(ngModel)]="newSeatDTO.haber">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Cuenta a tranferir</mat-label>
+            <mat-select name="idPrecedingAccount" [(ngModel)]="newSeatDTO.tranferTemporal">
+                <mat-option [value]="accountandPreceding" *ngFor="let accountandPreceding of accountAndPrecedingaccountList">
+                    {{accountandPreceding.name}}
+                </mat-option>
+            </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="">Crear nuevo</button>
+</form>
