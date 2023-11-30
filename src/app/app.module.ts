@@ -24,6 +24,7 @@ import {MatTableModule} from '@angular/material/table';
 import { CreateSeatComponent } from './components/create-seat/create-seat.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatToolbarModule,
     MatTableModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

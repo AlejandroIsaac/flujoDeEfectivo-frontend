@@ -1,8 +1,54 @@
-<header>
-    <mat-toolbar color="warn">
-        <button mat-icon-button>
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Flujo de efectivo</span>
-    </mat-toolbar>
+<header class="header">
+    <section class="org">
+        <h4>{{org.name}} <br> 
+            {{org.addrees}} <br> 
+            {{org.contact}}
+        </h4>
+    </section>
+    <section class="title"><h1 >Flujo de efectivo</h1></section>
+    <section class="help">
+        <button mat-button [matMenuTriggerFor]="menu"> <h2 class="title-help">Ayuda</h2></button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <h3>Comportamiento por tipo de cuenta.</h3>
+                <table>
+                    <thead>
+                      <tr>
+                            <th>Cuenta</th>
+                            <th>Debe</th>
+                            <th>Haber</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Activo</td>
+                        <td> + </td>
+                        <td> - </td>
+                      </tr>
+                      <tr>
+                        <td>Pasivo</td>
+                        <td> - </td>
+                        <td> + </td>
+                      </tr>
+                      <tr>
+                        <td>Capital</td>
+                        <td> - </td>
+                        <td> + </td>
+                      </tr>
+                      <tr>
+                        <td>Ingresos</td>
+                        <td> - </td>
+                        <td> + </td>
+                      </tr>
+                      <tr>
+                        <td>Gastos</td>
+                        <td> + </td>
+                        <td> - </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </button>
+        </mat-menu>
+    </section> 
+
 </header>
